@@ -9,3 +9,18 @@
   "python.pythonPath": "/Users/hyuntaeeom/Projects/personal/DjangoProject/venv_web/bin/python3"
 }
 ```
+
+## Data Make
+1. Open django shell
+
+`$ python manage.py shell`
+
+2. Make Question data
+
+`$ from pybo.models import Question, Answer`
+
+`$ from django.utils import timezone`
+
+`$ q = Question(subject='Subject', content='Content', created_date=timezone.now())`
+
+`$ q.save()`
