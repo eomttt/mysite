@@ -1,5 +1,5 @@
 ## 예제
-[점프 투 장구](https://github.com/pahkey/djangobook)
+[점프 투 장고](https://github.com/pahkey/djangobook)
 
 ## Installation
 - vscode 를 사용하는 경우 Python, Pylance Extension 을 설치 한 후
