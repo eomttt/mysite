@@ -128,3 +128,5 @@ STATICFILES_DIRS = [
 
 # Login success url
 LOGIN_REDIRECT_URL = '/'
+# Logout success url
+LOGOUT_REDIRECT_URL = '/'
