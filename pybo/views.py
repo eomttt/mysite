@@ -66,7 +66,7 @@ def question_modify(request, question_id):
   question = get_object_or_404(Question, pk=question_id)
 
   if request.user != question.author:
-    messages.error(request, 'Not have authorization')
+    messages.error(request, 'Not have authorization.')
     return redirect('pybo:detail', question_id=question.id)
   
   if request.method == 'POST':
@@ -82,6 +82,15 @@ def question_modify(request, question_id):
   context = { 'form': form }
   return render(request, 'pybo/question_form.html', context)
 
+@login_required(login_url='common:login')
+def question_delete(request, question_id):
+  question = get_object_or_404(Question, pk=question_id)
+  
+  if request.user != question.author:
+    messages.error(request, 'Not have authorization.')
+  
+  question.delete()
+  return redirect('pybo:index')
 
 # Generic View
 class IndexView(generic.ListView):
