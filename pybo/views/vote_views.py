@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect
 
-from ..models import Question
+from ..models import Answer, Question
 
 @login_required(login_url='common:login')
 def vote_question(request, question_id):
@@ -14,3 +14,14 @@ def vote_question(request, question_id):
     question.voter.add(request.user)
   
   return redirect('pybo:detail', question_id=question.id)
+
+@login_required(login_url='common:login')
+def vote_answer(request, answer_id):
+  answer = get_object_or_404(Answer, pk=answer_id)
+
+  if request.user == answer.author:
+    messages.error(request, "You can not vote. Becase this is your's answer")
+  else:
+    answer.voter.add(request.user)
+  
+  return redirect('pybo:detail', question_id=answer.question.id)
